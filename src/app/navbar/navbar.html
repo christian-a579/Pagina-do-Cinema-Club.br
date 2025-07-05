@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <span class="brand-text">Cinema Club</span>
+    </div>
+
+    <!-- Menu para desktop -->
+    <ul class="navbar-menu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#filmes" class="nav-link">Filmes</a></li>
+      <li><a href="#series" class="nav-link">Séries</a></li>
+      <li><a href="#animes" class="nav-link">Animes</a></li>
+      <li><a href="#contato" class="nav-link">Contato</a></li>
+    </ul>
+
+    <!-- Botão do menu mobile -->
+    <div class="navbar-toggle" (click)="toggleMenu()">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <ul class="navbar-menu-mobile" [class.active]="isMenuOpen">
+    <li><a href="#home" class="nav-link" (click)="closeMenu()">Home</a></li>
+    <li><a href="#filmes" class="nav-link" (click)="closeMenu()">Filmes</a></li>
+    <li><a href="#series" class="nav-link" (click)="closeMenu()">Séries</a></li>
+    <li><a href="#animes" class="nav-link" (click)="closeMenu()">animes</a></li>
+    <li>
+      <a href="#contato" class="nav-link" (click)="closeMenu()">Contato</a>
+    </li>
+  </ul>
+</nav>
