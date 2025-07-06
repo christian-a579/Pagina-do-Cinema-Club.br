@@ -2,16 +2,22 @@
 .main-content {
   padding-top: 80px; /* Espaço para a navbar fixa */
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 0;
   padding: 2rem;
-  text-align: center;
+  text-align: right;
 }
 
 .container h1 {
@@ -19,12 +25,20 @@
   color: white;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: static;
+  left: unset;
+  transform: unset;
+  top: unset;
 }
 
 .container p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 3rem;
+  position: static;
+  left: unset;
+  transform: unset;
+  top: unset;
 }
 
 .content-grid {
@@ -32,6 +46,9 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 100%;
 }
 
 .content-card {
@@ -68,9 +85,12 @@
 
   .content-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
+    margin-right: 0;
   }
 
   .container {
     padding: 1rem;
+    margin-right: 0;
   }
 }

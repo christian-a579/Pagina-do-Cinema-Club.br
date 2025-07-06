@@ -1,0 +1,14 @@
+<div *ngFor="let noticia of noticias" class="content-card">
+  <img
+    [src]="noticia.imagem"
+    alt="Imagem da notícia"
+    style="
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    "
+  />
+  <h3>{{ noticia.titulo }}</h3>
+  <p>{{ noticia.conteudo }}</p>
+</div>

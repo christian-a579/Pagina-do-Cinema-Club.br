@@ -30,6 +30,9 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    position: absolute;
+    top: -3px;
+    left: calc(40vw - 50px);
   }
 
   .brand-text {
@@ -38,6 +41,9 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: absolute;
+    top: -3px;
+    left: 40vw;
   }
 }
 
@@ -45,9 +51,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 120%);
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   list-style: none;
 
   @media (max-width: 768px) {
