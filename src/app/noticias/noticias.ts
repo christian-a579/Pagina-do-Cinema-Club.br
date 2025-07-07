@@ -16,7 +16,11 @@ export class NoticiasComponent implements OnInit {
 
   ngOnInit() {
     this.noticiasService.getNoticias().subscribe((dados) => {
-      this.noticias = dados;
+      this.noticias = dados.noticias.map((titulo: string, i: number) => ({
+        titulo,
+        imagem: dados.imagens[i],
+        conteudo: '',
+      }));
     });
   }
 }

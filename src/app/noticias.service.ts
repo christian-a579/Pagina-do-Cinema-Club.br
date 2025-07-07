@@ -8,6 +8,8 @@ export class NoticiasService {
   constructor(private http: HttpClient) {}
 
   getNoticias() {
-    return this.http.get<any[]>('http://localhost:3000/noticias');
+    return this.http.get<{ noticias: string[]; imagens: string[] }>(
+      'http://localhost:3000/api/conteudo'
+    );
   }
 }
