@@ -1,14 +1,11 @@
-<div *ngFor="let noticia of noticias" class="content-card">
-  <img
-    [src]="noticia.imagem"
-    alt="Imagem da notícia"
-    style="
-      width: 100%;
-      max-width: 300px;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    "
-  />
-  <h3>{{ noticia.titulo }}</h3>
-  <p>{{ noticia.conteudo }}</p>
+<div class="noticias-list-container">
+  <div *ngFor="let noticia of noticias" class="noticia-card">
+    <h2>{{ noticia.titulo }}</h2>
+    <img
+      *ngIf="noticia.imagem"
+      [src]="noticia.imagem"
+      alt="{{ noticia.titulo }}"
+    />
+    <p>{{ noticia.conteudo }}</p>
+  </div>
 </div>
