@@ -37,12 +37,14 @@
 
   .brand-text {
     color: white;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     position: absolute;
-    top: -3px;
+    top: 3px;
     left: 40vw;
   }
 }
@@ -61,7 +63,7 @@
   }
 
   .nav-link {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -70,7 +72,7 @@
     position: relative;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(214, 214, 214, 0.1);
       transform: translateY(-2px);
     }
 
