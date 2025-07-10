@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./noticias.component.scss'],
 })
 export class NoticiasComponent implements OnInit, OnDestroy {
-  noticias: { titulo: string; imagem: string; link?: string }[] = [];
+  noticias: string[] = [];
   imagemAtual = 0;
   intervalo: any;
 
@@ -18,16 +18,9 @@ export class NoticiasComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.noticiasService.getNoticias().subscribe((dados) => {
-      console.log(dados); // Veja o que chega aqui!
-      this.noticias = dados.noticias.map((titulo: string, i: number) => ({
-        titulo,
-        imagem: dados.imagens[i],
-        link: dados.links ? dados.links[i] : undefined,
-      }));
+      this.noticias = dados.imagens || [];
     });
   }
 
-  ngOnDestroy() {
-    // Implemente a lógica para limpar o intervalo quando o componente for destruído
-  }
+  ngOnDestroy() {}
 }

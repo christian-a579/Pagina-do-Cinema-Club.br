@@ -1,22 +1,9 @@
 <div class="noticias-list-container" *ngIf="noticias.length > 0">
   <div class="noticia-card">
-    <h2>
-      <a
-        *ngIf="noticias[imagemAtual].link"
-        [href]="noticias[imagemAtual].link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {{ noticias[imagemAtual].titulo }}
-      </a>
-      <span *ngIf="!noticias[imagemAtual].link">{{
-        noticias[imagemAtual].titulo
-      }}</span>
-    </h2>
     <img
-      *ngIf="noticias[imagemAtual].imagem"
-      [src]="noticias[imagemAtual].imagem"
-      alt="{{ noticias[imagemAtual].titulo }}"
+      *ngIf="noticias[imagemAtual]"
+      [src]="noticias[imagemAtual]"
+      alt="Noticia"
       class="imagem-carrossel"
     />
   </div>
