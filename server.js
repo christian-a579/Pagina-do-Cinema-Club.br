@@ -1,53 +1,80 @@
 const express = require("express");
 const cors = require("cors");
-const puppeteer = require("puppeteer");
+const NewsAPI = require("newsapi");
+
 const app = express();
 const PORT = 3000;
 
-const NEWS_API_KEY = "8e418e9923304740afbfff68c115a0c8";
+// Configuração da NewsAPI
+const newsapi = new NewsAPI("8e418e9923304740afbfff68c115a0c8");
 
 app.use(cors());
+app.use(express.json());
 
-app.get("/api/conteudo", async (req, res) => {
-  let browser;
+// Rota para buscar top headlines
+app.get("/api/top-headlines", async (req, res) => {
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-    const page = await browser.newPage();
-    await page.goto("https://deadline.com/", { waitUntil: "networkidle2" });
-
-    // Aguarda os blocos de notícia aparecerem
-    await page.waitForSelector(".o-card");
-
-    // Extrai os dados das notícias
-    const noticias = await page.evaluate(() => {
-      const cards = Array.from(document.querySelectorAll(".o-card"));
-      return cards.slice(0, 10).map((card) => {
-        const tituloEl = card.querySelector("a.c-title__link");
-        const imgEl = card.querySelector("img");
-        return {
-          titulo: tituloEl ? tituloEl.textContent.trim() : "",
-          link: tituloEl ? tituloEl.href : "",
-          imagem: imgEl ? imgEl.src : "",
-        };
-      });
+    const response = await newsapi.v2.topHeadlines({
+      sources: "bbc-news,the-verge",
+      q: "bitcoin",
+      category: "business",
+      language: "en",
+      country: "us",
     });
 
-    res.json({
-      noticias: noticias.map((n) => n.titulo),
-      imagens: noticias.map((n) => n.imagem),
-      links: noticias.map((n) => n.link),
-    });
+    res.json(response);
   } catch (error) {
-    console.error("Erro ao buscar notícias com Puppeteer:", error.message);
+    console.error(
+      "Erro ao buscar top headlines:",
+      error.response ? error.response.data : error
+    );
     res.status(500).json({ error: "Erro ao buscar notícias" });
-  } finally {
-    if (browser) await browser.close();
+  }
+});
+
+// Rota para buscar tudo
+app.get("/api/everything", async (req, res) => {
+  try {
+    const response = await newsapi.v2.everything({
+      q: "bitcoin",
+      sources: "bbc-news,the-verge",
+      domains: "bbc.co.uk, techcrunch.com",
+      from: "2017-12-01",
+      to: "2017-12-12",
+      language: "en",
+      sortBy: "relevancy",
+      page: 2,
+    });
+
+    res.json(response);
+  } catch (error) {
+    console.error(
+      "Erro ao buscar everything:",
+      error.response ? error.response.data : error
+    );
+    res.status(500).json({ error: "Erro ao buscar notícias" });
+  }
+});
+
+// Rota para buscar sources
+app.get("/api/sources", async (req, res) => {
+  try {
+    const response = await newsapi.v2.sources({
+      category: "technology",
+      language: "en",
+      country: "us",
+    });
+
+    res.json(response);
+  } catch (error) {
+    console.error(
+      "Erro ao buscar sources:",
+      error.response ? error.response.data : error
+    );
+    res.status(500).json({ error: "Erro ao buscar sources" });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
