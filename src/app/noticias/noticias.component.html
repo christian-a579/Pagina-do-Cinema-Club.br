@@ -1,5 +1,12 @@
 <div class="noticia-container">
-  <div *ngFor="let noticia of noticias">
-    {{ noticia.titulo }}
+  <div *ngFor="let noticia of noticias" class="noticia-card">
+    <div class="noticia-img" *ngIf="noticia.imagem">
+      <img [src]="noticia.imagem" alt="Imagem da notícia" />
+    </div>
+    <div class="noticia-content">
+      <h2 class="noticia-titulo">{{ noticia.titulo }}</h2>
+      <p class="noticia-descricao" *ngIf="noticia.descricao">{{ noticia.descricao }}</p>
+      <a *ngIf="noticia.link" [href]="noticia.link" target="_blank" class="noticia-link">Leia mais</a>
+    </div>
   </div>
 </div>
