@@ -10,7 +10,7 @@
 .noticia-card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  box-shadow: 0 4px 16px rgba(225, 219, 219, 0.1);
   max-width: 340px;
   min-width: 260px;
   display: flex;
@@ -39,7 +39,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0 0 0.7rem 0;
-  color: #222;
+  color: #b5a2a2;
 }
 .noticia-descricao {
   font-size: 1rem;
@@ -49,7 +49,7 @@
 }
 .noticia-link {
   align-self: flex-start;
-  background: #e50914;
+  background: #524c4d;
   color: #fff;
   text-decoration: none;
   padding: 0.5rem 1.1rem;
